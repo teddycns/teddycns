@@ -19,7 +19,7 @@ class Habit extends PureComponent {
            <div> <li className='habit'>
                 <span className="habit-name">{name}</span>   {/* name = this.props.habit.name */}
                 <span className="habit-count">{count}</span>
-                <button className="habit-button habit-increase" onClick={() => this.props.onIncrement(this.props.habit)}> {/* 이 코드와 this.handleIncrement 이 코드 결과는 동일 */}
+                <button className="habit-button habit-increase" onClick={() => this.props.onIncrement(this.props.habit)}> {/*이 코드와 this.handleIncrement 이 코드 결과는 동일*/}
                     <i className="fa-solid fa-square-plus"></i>
                 </button>
                 <button className="habit-button habit-decrease" onClick={this.handleDecrement}>

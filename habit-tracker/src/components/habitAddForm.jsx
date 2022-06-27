@@ -14,20 +14,6 @@ class HabitAddForm extends PureComponent {
         this.formRef.current.reset(); // onSubmit(Add버튼) 실행 후 input value 값 초기화
     };
 
-    handleAdd = () => {
-        console.log(this.props.habits);
-        const habitsCount = this.props.habits.length;
-        const add = [
-            {
-                id: habitsCount + 1,
-                name: "la",
-                count: 0
-            }
-        ];
-        const habits = [...this.props.habits, add];
-        this.setState({ habits });
-    };
-
     render() {
         console.log('habitAddForm');
         return (

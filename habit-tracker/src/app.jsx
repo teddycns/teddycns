@@ -18,19 +18,7 @@ class App extends Component {
   handleIncrement = (habit) => { //callback 함수
     //console.log(`handleIncrement ${habit.name}`);
 
-    // state를 직접 수정 (이 방법 사용X)
-    // habit.count++;
-    // this.setState(this.state);
-
-    // react에서는 state를 직접 수정하면 안됌. 따라서 위 주석과 같이 코딩하지 않고 아래와 같이 새로운 배열을 만들어 수정
-    // const habits = [...this.state.habits]; // ... : spread operator : 각각의 데이터를 복사
-    // const index = habits.indexOf(habit);
-    // habits[index].count++;
-    // this.setState({ habits: habits }); // key:value = habits(state에 정의된 habits 배열명) : habits (새로 정의한 배열명)
-    // =  this.setState({habits}); - key와 value의 이름이 같을 경우 하나로 생략 가능
-
-
-    // object는 불변의 object로 놔두고 변경 필요 시 새로운 object를 생성하는 것이 좋음(아래 코드 참조). 위 코드는 기능 구현은 가능하지만 좋은 코드는 아님
+    // object는 불변의 object로 놔두고 변경 필요 시 새로운 object를 생성하는 것이 좋음(깊은 복사)
     const habits = this.state.habits.map(item => {
       if (item.id === habit.id) {
         return { ...habit, count: habit.count + 1 }; // map으로 기존 state.habits을 돌면서 선택한 id와 같다면 새로운 habit에 object를 만드는데 count를 1만큼 증가시켜서 만들고
@@ -39,16 +27,24 @@ class App extends Component {
       }
     });
     this.setState({ habits });
+
+    // 얕은 복사
+    // const habits = this.state.habits.map((habit) => { return habit; });
+    // console.log(`1 : ${this.state.habits == habits}`);
+    // console.log(`2 : ${this.state.habits[0] == habits[0]}`); // true인 것을 보면 얕은 복사임을 알 수 있다
+    // this.setState({ habits });
+
+    //깊은 복사
+    // const habits = this.state.habits.map(habit => {
+    //   return{...habit}
+    // });
+    // console.log(`1 : ${this.state.habits == habits}`);
+    // console.log(`2 : ${this.state.habits[0] == habits[0]}`); // false인 것을 보면 깊은 복사임을 알 수 있다
+    // this.setState({habits});
   };
 
   handleDecrement = (habit) => {
     //console.log(`handleDecrement ${habit.name}`);
-
-    // const habits = [...this.state.habits];
-    // const index = habits.indexOf(habit);
-    // const count = habits[index].count - 1;
-    // habits[index].count = count < 0 ? 0 : count;
-    // this.setState({ habits: habits });
 
     const habits = this.state.habits.map(item => {
       if (item.id === habit.id) {
@@ -75,12 +71,6 @@ class App extends Component {
   };
 
   handleReset = () => {
-    // const habits = this.state.habits.map(habit => {
-    //   habit.count = 0;
-    //   return habit;
-    // });
-    // this.setState({ habits });
-
     const habits = this.state.habits.map(habit => {
       if (habit.count !== 0) {
         return { ...habit, count: 0 }
