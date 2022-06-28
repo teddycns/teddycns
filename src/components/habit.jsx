@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
 
 class Habit extends Component {
-    // 외부 props를 전달받아 보여주기만 하는 component 
+    // 외부 props를 전달받아 보여주기만 하는 component
+
+    //lifeCycle
+    componentDidMount(){ // mount
+        console.log(`habit: ${this.props.habit.name} mounted`);
+    }
+
+    componentWillUnmount(){ // unmount
+        console.log(`habit: ${this.props.habit.name} will unmount`);
+    }
 
     handleIncrement = () => {
         this.props.onIncrement(this.props.habit);
