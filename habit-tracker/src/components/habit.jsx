@@ -3,6 +3,15 @@ import React, { PureComponent } from 'react';
 class Habit extends PureComponent {
     // 외부 props를 전달받아 보여주기만 하는 component 
 
+    //lifeCycle
+    componentDidUpdate(){ //mount
+        console.log(`habit: ${this.props.habit.name} mounted`);
+    }
+
+    componentWillUnmount(){ //unmount
+        console.log(`habit: ${this.props.habit.name} will unmount`);
+    }
+
     handleIncrement = () => {
         this.props.onIncrement(this.props.habit);
     };
