@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './app';
 import '@fortawesome/fontawesome-free/js/all.js';
+import SimpleHabit from './components/simpleHabit';
 
 // react v17까지는 아래와 같이 코드 작성
 // ReactDOM.render(
@@ -17,6 +18,6 @@ import '@fortawesome/fontawesome-free/js/all.js';
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <StrictMode >
-        <App />
+        <SimpleHabit />
     </StrictMode>,
 );
