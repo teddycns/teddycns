@@ -18,4 +18,4 @@ const SimpleHabit = props => {
     );
 };
 
-export default SimpleHabit;
+export default SimpleHabit; 
