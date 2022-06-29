@@ -7,6 +7,7 @@ const SimpleHabit = props => {
         setCount(count + 1);
     };
 
+    
     return (
         <li className='habit'>
             <span className="habit-name">Reading</span>
