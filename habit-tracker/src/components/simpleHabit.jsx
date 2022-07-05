@@ -13,7 +13,7 @@ const SimpleHabit = props => {
 
     useEffect(() => {
         console.log(`mounted && updated: ${count}`); // console.log가 mount될 때, update될 때 모두 출력되는 것을 알 수 있다. => componentDidMount, componentDidUpdate를 한번에 해줌
-    }, [count]); 
+    }, []); 
 
     return (
         <li className='habit'>
